@@ -1,0 +1,29 @@
+
+> ev-wheels-custom-software@1.0.0 build
+> cross-env NODE_OPTIONS=--max-old-space-size=8192 NEXT_OUTPUT=export next build
+
+   Γû▓ Next.js 15.3.2
+   - Environments: .env.local, .env.production
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully in 20.0s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+(node:34488) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:24308) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:14176) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:28712) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:7996) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:35020) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:31712) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+> Build error occurred
+[Error: Page "/dashboard/purchases/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.]

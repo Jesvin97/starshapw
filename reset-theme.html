@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Theme to Blue</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: #f8fafc;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      button {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px;
+      }
+      button:hover {
+        background: #2563eb;
+      }
+      .success {
+        color: #059669;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      .current-theme {
+        background: #f1f5f9;
+        padding: 10px;
+        border-radius: 6px;
+        margin: 10px 0;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎨 Theme Reset Utility</h1>
+      <p>Use this tool to reset your theme from mono-blue to normal blue.</p>
+
+      <div class="current-theme">
+        Current Theme: <span id="current-theme">Loading...</span>
+      </div>
+
+      <button onclick="resetTheme()">Reset to Blue Theme</button>
+      <button onclick="clearAllThemes()">Clear All Theme Data</button>
+
+      <div id="result"></div>
+
+      <hr style="margin: 30px 0" />
+
+      <h3>Available Themes:</h3>
+      <div
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 10px;
+        "
+      >
+        <button onclick="setTheme('blue')">Blue</button>
+        <button onclick="setTheme('green')">Green</button>
+        <button onclick="setTheme('amber')">Amber</button>
+        <button onclick="setTheme('default')">Default</button>
+      </div>
+
+      <p style="margin-top: 20px; font-size: 14px; color: #64748b">
+        After changing the theme, refresh your EV app to see the changes.
+      </p>
+    </div>
+
+    <script>
+      function getCurrentTheme() {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+          const [name, value] = cookie.trim().split('=');
+          if (name === 'active_theme') {
+            return value;
+          }
+        }
+        return 'Not set (will use default: blue)';
+      }
+
+      function setThemeCookie(theme) {
+        const maxAge = 31536000; // 1 year
+        const secure = window.location.protocol === 'https:' ? 'Secure;' : '';
+        document.cookie = `active_theme=${theme}; path=/; max-age=${maxAge}; SameSite=Lax; ${secure}`;
+        updateCurrentTheme();
+        showResult(`✅ Theme set to: ${theme}`, 'success');
+      }
+
+      function clearThemeCookie() {
+        document.cookie =
+          'active_theme=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT;';
+        updateCurrentTheme();
+        showResult(
+          '✅ Theme cookie cleared. Will use default: blue',
+          'success'
+        );
+      }
+
+      function resetTheme() {
+        setThemeCookie('blue');
+      }
+
+      function clearAllThemes() {
+        clearThemeCookie();
+      }
+
+      function setTheme(theme) {
+        setThemeCookie(theme);
+      }
+
+      function updateCurrentTheme() {
+        document.getElementById('current-theme').textContent =
+          getCurrentTheme();
+      }
+
+      function showResult(message, type) {
+        const result = document.getElementById('result');
+        result.innerHTML = `<div class="${type}" style="margin-top: 15px;">${message}</div>`;
+      }
+
+      // Initialize
+      updateCurrentTheme();
+    </script>
+  </body>
+</html>

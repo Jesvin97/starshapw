@@ -1,0 +1,58 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/.turbo/
+
+# production
+/build
+/dist/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+.idea/
+# clerk configuration (can include secrets)
+/.clerk/
+
+
+# cursor 
+.cursorrules
+/memory-bank
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Temporary SQL diagnostic files
+debug_user_permissions.sql
+emergency_fix.sql
+fix_rls.sql
+
+# Mobile app - separate repository/deployment
+EvWheelsApp/
